@@ -34,7 +34,9 @@ Env::Env(const Env & other) {
     this->height = other.height;
     this->width = other.width;
     
+    this->start = new mcpp::Coordinate(0, 0, 0);
     *(this->start) = *(other.start);
+    delete other.start;
     this->envStructure = new char*[height];
     for (unsigned int i = 0; i < height; ++i) {
         envStructure[i] = new char[width];
@@ -46,13 +48,12 @@ Env::Env(const Env & other) {
         }
     }
     
-
 }
 
 Env::~Env()
 {
     for (unsigned int i = 0; i < height; ++i) {
-         delete[] envStructure[i];
+         delete envStructure[i];
          envStructure[i] = nullptr;    
     }
     delete envStructure;
