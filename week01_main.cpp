@@ -34,10 +34,26 @@ int main(void){
         ReadEnvStart(&start);
 
         // Create instance of Env class
+        
         Env env(envHeight, envWidth, envStructure, start);
-    
+        
+        //delete memory
+        // for(unsigned int i =0; i < envHeight; i++){
+        //     delete[] envStructure[i];
+        //     envStructure[i] = nullptr;
+        // }
+
+        // delete[] envStructure;
+        // envStructure = nullptr;
+        
+        Env env2(env);
+        start = new mcpp::Coordinate(123, 200, 187);
+        
+        env2.setStart(start);
+        
         //Construct the environment
         BuildEnvironment(&env);
+        BuildEnvironment(&env2);
 
         #ifdef TESTING_ON
         //Testing build
@@ -52,9 +68,10 @@ int main(void){
         std::cin >> wdt;
         std::cin >> hgt;
         
-
+        
         mcpp::MinecraftConnection mc;
         for(unsigned int h = 0; h<hgt; h++){
+            
             for(unsigned int w = 0; w<wdt; w++){
                 mcpp::BlockType block1 = mc.getBlock(mcpp::Coordinate(startx + w,starty, startz+h));
                 mcpp::BlockType block2 = mc.getBlock(mcpp::Coordinate(startx + w,starty+1, startz+h));
@@ -74,17 +91,8 @@ int main(void){
 
         
 
-        //delete memory
-        for(unsigned int i =0; i < envHeight; i++){
-            delete[] envStructure[i];
-            envStructure[i] = nullptr;
-        }
-        delete[] envStructure;
-        envStructure = nullptr;
-
-        delete start;
-        start = nullptr;
-
+        
+        std::cout << "test" << std::endl;
     }catch(std::invalid_argument& e){
         std::cout << "Invalid argument: " << e.what() << std::endl;
     }catch(std::exception& e){

@@ -2,6 +2,7 @@
 
 all: week01_example
 
+
 clean:
 	rm -f week01_example *.o
 

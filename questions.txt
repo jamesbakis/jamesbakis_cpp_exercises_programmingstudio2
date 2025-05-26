@@ -3,3 +3,5 @@ is the location of the maze supposed to be the point at which i generated it
 am i allowed to use vectors and should i be using pointers?
 
 Signify assumptions
+
+a.out/lldb

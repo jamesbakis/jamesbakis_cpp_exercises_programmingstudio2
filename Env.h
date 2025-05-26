@@ -19,6 +19,9 @@ public:
     Env(unsigned int height, 
         unsigned int width, 
         char** envStructure, mcpp::Coordinate* start);
+    
+    Env(const Env & other);
+
     ~Env();
 
     //other methods

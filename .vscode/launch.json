@@ -1,0 +1,12 @@
+{
+"configurations": [
+{
+"type": "lldb",
+"request": "launch",
+"name": "Week01_example",
+"program": "${workspaceFolder}/week2_class1/week01_example",
+"args": [],
+"cwd": "${workspaceFolder}/week2_class1"
+}
+]
+}

@@ -14,14 +14,49 @@ Env::Env(unsigned int height,
         char** envStructure, mcpp::Coordinate* start):
                         height(height),
                         width(width)
-{
-    this->envStructure = envStructure;
+{    
+    std::cout << height << width << std::endl;
+    this->envStructure = new char*[height];
+    for (unsigned int i = 0; i < height; ++i) {
+        this->envStructure[i] = new char[width];
+    }
+
+    for (unsigned int i = 0; i < height; ++i) {
+        for (unsigned int j = 0; j < width; ++j) {
+        this->envStructure[i][j] = envStructure[i][j];
+        }
+    }
+    
     this->start = start;
+}
+
+Env::Env(const Env & other) {
+    this->height = other.height;
+    this->width = other.width;
+    
+    *(this->start) = *(other.start);
+    this->envStructure = new char*[height];
+    for (unsigned int i = 0; i < height; ++i) {
+        envStructure[i] = new char[width];
+    }
+   
+    for (unsigned int i = 0; i < height; ++i) {
+        for (unsigned int j = 0; j < width; ++j) {
+        envStructure[i][j] = other.envStructure[i][j];
+        }
+    }
+    
+
 }
 
 Env::~Env()
 {
-    //TODO
+    for (unsigned int i = 0; i < height; ++i) {
+         delete[] envStructure[i];
+         envStructure[i] = nullptr;    
+    }
+    delete envStructure;
+    envStructure = nullptr;
 }
 
 
@@ -43,7 +78,7 @@ void Env::setWidth(unsigned int width){
 
 //Identify is there are any issues
 void Env::setStart(mcpp::Coordinate* start){
-    this->start = start;
+    *(this->start) = *start;
 }
 
 mcpp::Coordinate* Env::getStart(void) const{
