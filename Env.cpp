@@ -53,10 +53,10 @@ Env::Env(const Env & other) {
 Env::~Env()
 {
     for (unsigned int i = 0; i < height; ++i) {
-         delete envStructure[i];
+         delete[] envStructure[i];
          envStructure[i] = nullptr;    
     }
-    delete envStructure;
+    delete[] envStructure;
     envStructure = nullptr;
 }
 
