@@ -21,34 +21,31 @@ int main(void){
         //Read env size
         ReadEnvSize(envHeight, envWidth);
 
-        // Read the structure of the environment
+        // // Read the structure of the environment
         char** envStructure;
         envStructure = new char*[envHeight];
         for(unsigned int i =0; i < envHeight; i++){
             envStructure[i] = new char[envWidth];
         }
+
         readEnvStdin(envStructure, envHeight, envWidth);
 
-        // Read the start coordinate
+        // // Read the start coordinate
         mcpp::Coordinate* start = nullptr;
         ReadEnvStart(&start);
-
-        // Create instance of Env class
+        
+        // // Create instance of Env class
         
         Env env(envHeight, envWidth, envStructure, start);
-        envStructure = nullptr;
-        start = nullptr;
-        start = new mcpp::Coordinate(0, 1, 0);
-        env.setStart(start);
         
         Env env2(env);
         start = new mcpp::Coordinate(123, 200, 187);
         
         env2.setStart(start);
         
-        //Construct the environment
-        BuildEnvironment(&env);
-        BuildEnvironment(&env2);
+        // //Construct the environment
+        // BuildEnvironment(&env);
+        // // BuildEnvironment(&env2);
 
         #ifdef TESTING_ON
         //Testing build
