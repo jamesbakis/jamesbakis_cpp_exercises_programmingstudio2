@@ -2,6 +2,8 @@
 
 all: week01_example
 
+run:
+	./week01_example
 
 clean:
 	rm -f week01_example *.o

@@ -36,15 +36,10 @@ int main(void){
         // Create instance of Env class
         
         Env env(envHeight, envWidth, envStructure, start);
-        
-        //delete memory
-        // for(unsigned int i =0; i < envHeight; i++){
-        //     delete[] envStructure[i];
-        //     envStructure[i] = nullptr;
-        // }
-
-        // delete[] envStructure;
-        // envStructure = nullptr;
+        envStructure = nullptr;
+        start = nullptr;
+        start = new mcpp::Coordinate(0, 1, 0);
+        env.setStart(start);
         
         Env env2(env);
         start = new mcpp::Coordinate(123, 200, 187);
